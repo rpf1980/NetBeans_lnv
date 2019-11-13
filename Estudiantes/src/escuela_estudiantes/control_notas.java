@@ -28,4 +28,10 @@ public class control_notas {
         
     }
     
+    public boolean borrar_nota(String dni, int cod_asig)
+    {
+        String[] datos = {dni};
+        return sen.insertar(datos, "delete from nota where cod_dni_nota = ? and cod_asignatura_nota = " + cod_asig);
+    }
+    
 }

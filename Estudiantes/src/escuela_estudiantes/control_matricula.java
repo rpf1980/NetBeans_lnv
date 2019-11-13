@@ -65,6 +65,14 @@ public class control_matricula {
         return sen.insertar(datos, "insert into asignaturaxestudiante(cod_dni,cod_asignatura ) values(?,?);");
     }
     
+    //borrar_matricula
+    
+    public boolean borrar_matricula(String dni, int cod_asig)
+    {
+        String[] datos = {dni};
+        return sen.insertar(datos, "delete from asignaturaxestudiante where cod_dni = ? and cod_asignatura = "+cod_asig);
+    }
+    
     public Object[][] datos_matricula (String id_alumno)
      {
         String[] columnas={"cod_dni","nombre_asignatura"};

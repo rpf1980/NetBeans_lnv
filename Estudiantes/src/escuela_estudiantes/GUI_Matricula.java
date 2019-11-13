@@ -43,6 +43,7 @@ public class GUI_Matricula extends javax.swing.JInternalFrame {
         jTextField_codigoasignatura = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jComboBox_asignaturas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         jComboBox_asignaturas.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +97,13 @@ public class GUI_Matricula extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Asignaturas de los alumnos");
 
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,7 +124,8 @@ public class GUI_Matricula extends javax.swing.JInternalFrame {
                                 .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel3))))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jButton1))))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,7 +175,8 @@ public class GUI_Matricula extends javax.swing.JInternalFrame {
                         .addGap(0, 76, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_registrar)
-                            .addComponent(btn_salir)))
+                            .addComponent(btn_salir)
+                            .addComponent(jButton1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -211,8 +221,31 @@ public class GUI_Matricula extends javax.swing.JInternalFrame {
 }
     }//GEN-LAST:event_jComboBox_asignaturasActionPerformed
 
+    //Btn ELIMINAR
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String dni = jTextField_dni.getText();
+        int cod_asignatura = jComboBox_asignaturas.getSelectedIndex()+1;
+               
+        if(!dni.equals(""))
+        {
+        if(ctr.borrar_matricula(dni, cod_asignatura))
+        {
+        JOptionPane.showMessageDialog(null,"Matrícula eliminada ","Mensaje",JOptionPane.INFORMATION_MESSAGE);        
+        }
+        else
+        {
+        JOptionPane.showMessageDialog(this, "Error");
+        }
+        }
+        else
+        {
+          JOptionPane.showMessageDialog(this, "Es necesario el DNI y el código de asignatura");  
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_salir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_registrar;
     private javax.swing.JComboBox jComboBox_asignaturas;
     private javax.swing.JLabel jLabel1;

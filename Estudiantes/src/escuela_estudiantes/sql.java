@@ -31,6 +31,23 @@ public class sql {
        return estado;
    }
     
+    public boolean borrar(String datos[], String delete){
+      boolean estado = false;
+       try {
+            ps = con.conectado().prepareStatement(delete);
+            for(int i=0; i<=datos.length-1;i++){
+                ps.setString(i+1, datos[i]);            
+            }
+            System.out.println(ps);
+            ps.execute();
+            ps.close();
+            estado = true;
+         }catch(SQLException e){
+         System.out.println(e);
+      }
+       return estado;
+   }
+    
     
      public Object [][] datosTabla(String nombrecol[], String tabla, String sql){
       int registros = 0;
